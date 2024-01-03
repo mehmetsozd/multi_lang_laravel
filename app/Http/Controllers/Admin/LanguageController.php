@@ -97,100 +97,18 @@ class LanguageController extends Controller
     private function tableAddColumn($lang)
     {
         $defualt = env('APP_DEFUALT_LANG');
-        Schema::table('before_photos', function (Blueprint $table) use ($lang,$defualt) {
-            $table->after('text_'.$defualt, function ($table) use ($lang) {
-                $table->string('text_'.$lang)->nullable();
+        Schema::table('xxx', function (Blueprint $table) use ($lang,$defualt) {
+            $table->after('xxxy'.$defualt, function ($table) use ($lang) {
+                $table->string('xxxyy'.$lang)->nullable();
             });
-
-        });
-        Schema::table('comments', function (Blueprint $table) use ($lang,$defualt) {
-            $table->after('comment_'.$defualt, function ($table) use ($lang) {
-                $table->string('name_'.$lang)->nullable();
-                $table->string('position_'.$lang)->nullable();
-                $table->text('comment_'.$lang)->nullable();
-            });
-        });
-        Schema::table('doctors', function (Blueprint $table) use ($lang,$defualt) {
-            $table->after('text_'.$defualt, function ($table) use ($lang) {
-                $table->string('name_'.$lang)->nullable();
-                $table->string('position_'.$lang)->nullable();
-                $table->string('text_'.$lang)->nullable();
-            });
-        });
-        Schema::table('faqs', function (Blueprint $table) use ($lang,$defualt) {
-            $table->after('answer_'.$defualt, function ($table) use ($lang) {
-                $table->string('question_'.$lang)->nullable();
-                $table->text('answer_'.$lang)->nullable();
-            });
-        });
-        Schema::table('landings', function (Blueprint $table) use ($lang,$defualt) {
-            $table->after('name_'.$defualt, function ($table) use ($lang) {
-                $table->string('name_'.$lang)->nullable();
-            });
-
-        });
-        Schema::table('landing_settings', function (Blueprint $table) use ($lang,$defualt) {
-            $table->after('settings_'.$defualt, function ($table) use ($lang) {
-                $table->json('settings_'.$lang)->nullable();
-            });
-        });
-
-        // $settingsDefault = DB::table('landing_settings')->select('settings_'.$defualt)->get();
-
-        // foreach ($settingsDefault as $data) {
-        //     LandingSetting::where('settings_'.$defualt, $data->{'settings_'.$defualt})
-        //         ->update(['settings_'.$lang => $data->{'settings_'.$defualt}]);
-        // }
-        Schema::table('services', function (Blueprint $table) use ($lang,$defualt) {
-            $table->after('name_'.$defualt, function ($table) use ($lang) {
-                $table->string('name_'.$lang)->nullable();
-            });
-        });
-        Schema::table('sliders', function (Blueprint $table) use ($lang,$defualt) {
-            $table->after('link_text_'.$defualt, function ($table) use ($lang) {
-                $table->string('title_'.$lang)->nullable();
-                $table->string('description_'.$lang)->nullable();
-                $table->string('link_text_'.$lang)->nullable();
-            });
-        });
 
     }
 
-
-
-
     private function tableDropColumn($lang){
-        Schema::table('before_photos', function (Blueprint $table) use ($lang) {
-            $table->dropColumn('text_'.$lang);
+        Schema::table('xxx', function (Blueprint $table) use ($lang) {
+            $table->dropColumn('xxxy'.$lang);
         });
-        Schema::table('comments', function (Blueprint $table) use ($lang) {
-            $table->dropColumn('name_'.$lang);
-            $table->dropColumn('position_'.$lang);
-            $table->dropColumn('comment_'.$lang);
-        });
-        Schema::table('doctors', function (Blueprint $table) use ($lang) {
-            $table->dropColumn('name_'.$lang);
-            $table->dropColumn('position_'.$lang);
-            $table->dropColumn('text_'.$lang);
-        });
-        Schema::table('faqs', function (Blueprint $table) use ($lang) {
-            $table->dropColumn('question_'.$lang);
-            $table->dropColumn('answer_'.$lang);
-        });
-        Schema::table('landings', function (Blueprint $table) use ($lang) {
-            $table->dropColumn('name_'.$lang);
-        });
-        Schema::table('landing_settings', function (Blueprint $table) use ($lang) {
-            $table->dropColumn('settings_'.$lang);
-        });
-        Schema::table('services', function (Blueprint $table) use ($lang) {
-            $table->dropColumn('name_'.$lang);
-        });
-        Schema::table('sliders', function (Blueprint $table) use ($lang) {
-            $table->dropColumn('title_'.$lang);
-            $table->dropColumn('description_'.$lang);
-            $table->dropColumn('link_text_'.$lang);
-        });
+
     }
 
     public function setEnvironmentValue()
